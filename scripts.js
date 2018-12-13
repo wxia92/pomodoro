@@ -1,6 +1,6 @@
 let time = 1500000;
-let status = "paused";
-let currentStage = "work";
+let status = "Paused";
+let currentStage = "Work";
 
 
 let playButton = document.querySelector("#play");
@@ -27,15 +27,15 @@ pauseButton.disabled = true;
 resetButton.disabled = true;
 
 change.addEventListener('click',() => {
-  if (currentStage == "work") {
-    currentStage = "break"
+  if (currentStage == "Work") {
+    currentStage = "Break"
     stageButton.textContent = currentStage;
     document.querySelector('#minutes').textContent = 5;
     document.querySelector('#seconds').textContent = "00";
     time = 300000;
   }
   else {
-    currentStage = "work"
+    currentStage = "Work"
     stageButton.textContent = currentStage;
 
     document.querySelector('#minutes').textContent = 25;
@@ -51,7 +51,7 @@ const pomoTimer = (() => {
   let x;
   let start = () => {
     playButton.disabled = true;
-    stageButton.disabled = true;
+    changeButton.disabled = true;
     pauseButton.disabled = false;
     resetButton.disabled = false;
     checkmarkOne.disabled = true;
@@ -60,8 +60,8 @@ const pomoTimer = (() => {
     x = 
     setInterval(()=>{
       time = time - 1000
-      if (time < 0 && currentStage=="work") {
-        currentStage = "break"
+      if (time < 0 && currentStage=="Work") {
+        currentStage = "Break"
         time = 300000;
         if (checkmarkThree.checked=="checked"){
           checkmarkFour.checked=true;
@@ -83,11 +83,11 @@ const pomoTimer = (() => {
         
         
       }
-      else if (time < 0 && currentStage=="break"){
-        currentStage = "work";
+      else if (time < 0 && currentStage=="Break"){
+        currentStage = "Work";
         time = 1500000;
       }
-      status = "running";
+      status = "Running";
       statusButton.textContent = status;
       let minutes = Math.floor((time % (1000*60*60))/(1000*60));
       let seconds = Math.floor((time % (1000*60))/ 1000);
@@ -102,9 +102,9 @@ const pomoTimer = (() => {
     };
 
   let pause = () => {
-    if (status == "running"){
+    if (status == "Running"){
       clearInterval(x);
-      status = "paused"
+      status = "Paused"
       statusButton.textContent = status;
       }
     playButton.disabled = false;
@@ -112,20 +112,20 @@ const pomoTimer = (() => {
     };
     
   let reset = () => {
-    if (status == "running"){
+    if (status == "Running"){
       clearInterval(x);
-      status = "paused";
+      status = "Paused";
       statusButton.textContent = status;
       }
     document.querySelector('#minutes').textContent = 25;
     document.querySelector('#seconds').textContent = "00";
     time = 1500000;
-    currentStage = "work"
+    currentStage = "Work"
     stageButton.textContent = currentStage;
     playButton.disabled = false;
     pauseButton.disabled = true;
     resetButton.disabled = true;
-    stageButton.disabled = false;
+    changeButton.disabled = false;
     checkmarkOne.checked = false; checkmarkOne.disabled = false;
     checkmarkTwo.checked = false; checkmarkTwo.disabled = true;
     checkmarkThree.checked = false; checkmarkThree.disabled = true;
