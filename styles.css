@@ -1,0 +1,33 @@
+body{
+  background-color: gray;
+}
+
+h3{
+  text-align: center;
+  margin:auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:38px;
+  margin-bottom:30px;
+}
+
+.clock-block{
+  text-align: center;
+}
+
+
+.session-block{
+  text-align: center;
+}
+
+.timer{
+  font-size: 40px;
+  padding: 30px;
+  width: 20%;
+  margin:0 auto 10px auto;
+  background-color:black;
+  color:red;
+  border-radius: 15px;
+  border: 8px inset #ffffff;
+  
+}
+
